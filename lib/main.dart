@@ -29,14 +29,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-  bool isSwitched = false;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
+  bool themeSwitched = false;
+  String langChecked = 'en';
 
   @override
   Widget build(BuildContext context) {
@@ -57,7 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
 
       floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
+        onPressed: null,
         tooltip: 'Increment',
         child: Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.
@@ -68,21 +62,38 @@ class _MyHomePageState extends State<MyHomePage> {
           children: <Widget>[
             SwitchListTile(
               title: const Text('Darkmode'),
-              value: isSwitched,
+              value: themeSwitched,
               onChanged: (value) {
                 setState(() {
-                  isSwitched = value;
-                  print(isSwitched);
+                  themeSwitched = value;
+                  print(themeSwitched);
                 });
               },
               activeTrackColor: Colors.lightBlueAccent,
               activeColor: Colors.blue,
             ),
-            ListTile(
-              title: Text('Item 2'),
-              onTap: () {
-                Navigator.pop(context);
-              },
+            ExpansionTile(
+              title: Text("Languages"),
+              children: <Widget>[
+                CheckboxListTile(
+                  title: const Text('English'),
+                  value: langChecked == 'en',
+                  onChanged: (bool value) {
+                    setState(() {
+                      langChecked = value ? 'en' : 'de';
+                    });
+                  },
+                ),
+                CheckboxListTile(
+                  title: const Text('German'),
+                  value: langChecked == 'de',
+                  onChanged: (bool value) {
+                    setState(() {
+                      langChecked = value ? 'de' : 'en';
+                    });
+                  },
+                ),
+              ],
             ),
           ],
         ),
