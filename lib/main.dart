@@ -192,6 +192,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   void changeBrightness() {
     DynamicTheme.of(context)
-        .setBrightness(themeSwitched ? Brightness.light : Brightness.dark);
+        .setBrightness(themeSwitched ? Brightness.dark : Brightness.light);
   }
 }
