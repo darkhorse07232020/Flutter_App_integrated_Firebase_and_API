@@ -83,7 +83,7 @@ class _MyHomePageState extends State<MyHomePage> {
         .get(); //get the data
     result = data.data();
     langChecked = result['lang'];
-    themeSwitched = result['mode'];
+    themeSwitched = (result['mode'] == 'true');
   }
 
   void setData() async {
